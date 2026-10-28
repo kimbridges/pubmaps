@@ -1,0 +1,56 @@
+Package: pubmaps
+Title: Study-Site Maps for Journal Editors
+Version: 0.2.0
+Authors@R: c(
+    person("Kim", "Bridges", email = "kim.bridges@gmail.com", role = c("aut", "cre")),
+    person("Claude", role = "aut", comment = "Anthropic; collaborative development"),
+    person("Will", "McClatchey", role = "ctb", comment = "editorial practice that shaped the tool"))
+Description: Turns a manuscript into a publication-ready study-site map with a
+    locator inset. A language model reads the manuscript and lists every
+    mappable place with the page and sentence that mention it; the GeoNames and
+    OpenStreetMap (Nominatim) gazetteers locate them, each position recorded with
+    its source and match quality; fixed rules choose the projection, frame,
+    inset, scale bar and north arrow, and draw parks and districts as areas
+    and named rivers as lines. The
+    editor checks everything on an HTML review page, corrects one table
+    ('points.csv'), and redraws. Companion to the book 'PubMaps: Study-site maps
+    for journal editors'.
+License: MIT + file LICENSE
+URL: https://github.com/kimbridges/pubmaps,
+    https://kimbridges-documents.netlify.app/pubmaps/
+BugReports: https://github.com/kimbridges/pubmaps/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.4.0)
+Imports:
+    base64enc,
+    countrycode,
+    ellmer (>= 0.3.0),
+    ggplot2 (>= 3.5.0),
+    ggrepel (>= 0.9.5),
+    ggspatial,
+    grDevices,
+    grid,
+    httr2,
+    jsonlite,
+    methods,
+    patchwork,
+    pdftools,
+    rnaturalearth,
+    rnaturalearthdata,
+    rnaturalearthhires,
+    sf,
+    stats,
+    tools,
+    utils,
+    yaml
+Suggests:
+    elevatr,
+    scales,
+    terra,
+    testthat (>= 3.0.0)
+Remotes:
+    ropensci/rnaturalearthhires
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1
