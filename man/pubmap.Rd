@@ -8,12 +8,12 @@ pubmap(
   manuscript,
   dir = NULL,
   provider = "openai",
-  model = "gpt-6.1-sol",
+  model = NULL,
   backends = c("geonames", "nominatim"),
   places = NULL,
   relief = FALSE,
-  legend = TRUE,
-  inset_label = TRUE
+  legend = NULL,
+  inset_label = NULL
 )
 }
 \arguments{
@@ -25,7 +25,9 @@ manuscript inside \code{\link[=pubmaps_review_dir]{pubmaps_review_dir()}}.}
 \item{provider}{Which language model provider reads the manuscript:
 \code{"openai"}, \code{"anthropic"} or \code{"gemini"}. Its API key must be in \code{.Renviron}.}
 
-\item{model}{Model name, or \code{NULL} for the provider's default.}
+\item{model}{Model name. \code{NULL} (the default) uses PubMaps' choice for the
+provider: \code{"gpt-6.1-sol"} for OpenAI, \code{"claude-sonnet-5-5"} for Anthropic.
+The model used is recorded on the review page.}
 
 \item{backends}{Gazetteers to search, \code{"geonames"} and/or \code{"nominatim"}.}
 
@@ -38,7 +40,9 @@ to skip the reading step.}
 that explains the symbols in the caption; the review page and
 \code{symbol_key.txt} give the key as text either way.}
 
-\item{inset_label}{Print the country name on the inset map.}
+\item{inset_label}{Print the country name on the inset map.
+For both, \code{NULL} (the default) keeps the review folder's last choice; a new
+folder starts with both on.}
 }
 \value{
 The review folder path, invisibly.
@@ -52,7 +56,7 @@ editor's table (\code{points.csv}) and a record of what was drawn (\code{recipe.
 \examples{
 \dontrun{
 pubmap("Medley_et_al_2010.pdf")
-pubmap("paper.pdf", provider = "anthropic", model = "claude-sonnet-5-5")
+pubmap("paper.pdf", provider = "anthropic")
 }
 }
 \seealso{
